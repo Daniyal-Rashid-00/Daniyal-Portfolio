@@ -1,21 +1,29 @@
-"use client";
-
-import { useEffect } from "react";
+import { ScrollAnimation } from "./components/ScrollAnimation";
 
 export default function Page() {
-  useEffect(() => {
-    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, observerOptions);
+  return (
+    <main>
+      <ScrollAnimation />
+      <div className="bg-animation"></div>
 
-    document
-      .querySelectorAll(
-        ".fade-in, .fade-in-left, .fade-in-right, .scale-in"
-      )
-      .forEach((el) => observer.observe(el));
+      {/* Navigation */}
+      <nav>
+        <div className="nav-container">
+          <a href="#" className="logo">DR</a>
+          <div className="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Rest of your sections */}
+      
+    </main>
+  )
 
     const sections = Array.from(document.querySelectorAll("section"));
     const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".nav-links a"));
